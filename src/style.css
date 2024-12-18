@@ -9,4 +9,17 @@ body {
   color: #fff;
 }
 
+.board {
+  margin-block: 2rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  /* border: 1px solid #fff; */
+}
 
+.card {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 0.25rem;
+  background: rgb(107, 38, 156);
+}

@@ -1,3 +1,4 @@
+const board = document.getElementById("board");
 const form = document.querySelector(".user-form");
 const currentPlayer = document.querySelector(".user-form");
 const usernameInput = form.firstElementChild;
@@ -10,8 +11,19 @@ form.addEventListener("submit", e => {
     // update error element
     console.log("Your name must be at least 2 characters.")
   } else {
-    // update username in DOM
     currentPlayer.textContent = `Now playing: ${usernameInput.value}`;
-    // call function to render the game
+    renderBoard();
   }
-})
+});
+
+function renderBoard() {
+  for (let i = 0; i < 16; i++) {
+    const card = document.createElement("div");
+    card.classList.add("card");
+
+    setTimeout(() => {
+      board.appendChild(card);  
+    }, 50 * i);
+  }
+}
+
