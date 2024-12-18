@@ -23,3 +23,15 @@ The purpose of this project is to demonstrate understanding of the Document Obje
 - Ensure that the program runs without errors.
 - Include a README file that contains a description of the application.
 - Level of effort displayed in creativity, presentation and user experience.
+
+## Steps
+
+**Form**
+- Create basic form for user to enter their name
+- Validate that they entered a name with atleast 2 characters
+- Upon successful form submission start the game
+
+**Game**
+- Randomize an array of 8 pairs of images
+- Iterate through the randomized array of images and create a card element for each image
+- Append the cards to the game board
