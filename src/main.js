@@ -76,15 +76,21 @@ function handleClick(card) {
   if (choiceOne && choiceTwo) {
     if (choiceOne.getAttribute("name") === choiceTwo.getAttribute("name")) {
       console.log("those cards match!");
-      // 
-
+      // set data-matched to true
+      choiceOne.setAttribute("data-matched", true);
+      choiceTwo.setAttribute("data-matched", true);
+      choiceOne = null;
+      choiceTwo = null;
     } else {
       console.log("those cards don't match");
-      // 
-
+      // removed the flipped class after a delay
+      setTimeout(() => {
+        choiceOne.classList.remove("flipped");
+        choiceTwo.classList.remove("flipped");
+        choiceOne = null;
+        choiceTwo = null;
+      }, 1000)
     }
-    choiceOne = null;
-    choiceTwo = null;
   }
 }
 
