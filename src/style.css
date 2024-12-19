@@ -9,12 +9,16 @@ body {
   color: #fff;
 }
 
+img {
+  display: block;
+  max-width: 100%;
+}
+
 .board {
   margin-block: 2rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0.5rem;
-  /* border: 1px solid #fff; */
 }
 
 .card {
@@ -27,4 +31,18 @@ body {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+/* sandbox */
+.test-card {
+  max-width: 12rem;
+  position: relative;
+}
+
+.test-card__front {
+
+}
+
+.test-card__back {
+
 }
