@@ -21,5 +21,10 @@ body {
   width: 100%;
   aspect-ratio: 1 / 1;
   border-radius: 0.25rem;
-  background: rgb(107, 38, 156);
+  background-color: rgb(107, 38, 156);
+
+  background-image: url("/images/dogs/corgi.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
