@@ -20,9 +20,8 @@ const cardImages = [
   "yawn"
 ];
 
-// data-flipped - prevent from choosing flipped cards
+// flipped class - prevent from choosing flipped cards
 // data-matched - track which cards are matched to determine when game ends
-
 
 form.addEventListener("submit", e => {
   e.preventDefault();
@@ -48,8 +47,8 @@ function renderBoard() {
     card.setAttribute("data-matched", false);
 
     card.innerHTML = `
-      <img class="card__front" src="/images/dogs/${cards[i]}.jpg" alt="card front">
-      <img class="card__back" src="/images/cover.jpg" alt="card back">
+        <img class="card__front" src="/images/dogs/${cards[i]}.jpg" alt="card front">
+        <img class="card__back" src="/images/cover.jpg" alt="card back">
     `;
 
     setTimeout(() => {
@@ -70,14 +69,19 @@ function renderBoard() {
 
 function handleClick(card) {
   console.log(card.getAttribute("name"));
+  card.classList.add("flipped");
 
   choiceOne ? choiceTwo = card : choiceOne = card;
 
   if (choiceOne && choiceTwo) {
     if (choiceOne.getAttribute("name") === choiceTwo.getAttribute("name")) {
-      console.log("those cards match!")
+      console.log("those cards match!");
+      // 
+
     } else {
-      console.log("those cards don't match")
+      console.log("those cards don't match");
+      // 
+
     }
     choiceOne = null;
     choiceTwo = null;
@@ -99,3 +103,13 @@ function shuffle(arr) {
   const shuffledArr = arr.sort(() => Math.random() - 0.5);
   return shuffledArr;
 }
+
+
+// sandbox:
+
+// const testCard = document.querySelector(".test-card");
+// // console.log(testCard)
+// testCard.addEventListener("click", e => {
+//   console.log(e.target.parentElement);
+//   e.target.parentElement.classList.toggle("flipped");
+// })

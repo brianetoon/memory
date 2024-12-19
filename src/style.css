@@ -24,20 +24,36 @@ img {
 }
 
 .card {
-  border-radius: 0.25rem;
   position: relative;
 }
 /* cards picture */
 .card__front {
-  /* position: absolute; */
+  position: absolute;
   border-radius: 0.25rem;
+  transform: rotateY(90deg);
+  transition: all ease-in 0.2s;
 }
+.flipped .card__front {
+  transform: rotateY(0deg);
+  transition-delay: 0.2s;
+}
+
 /* card cover */
 .card__back {
   border-radius: 0.25rem;
+  transition: all ease-in 0.2s;
+  transition-delay: 0.2s
+}
+.flipped .card__back {
+  transform: rotateY(90deg);
+  transition-delay: 0s;
 }
 
+
+
+
 /* sandbox */
+
 .test-card {
   max-width: 12rem;
   position: relative;
@@ -49,7 +65,7 @@ img {
   transform: rotateY(90deg);
   transition: all ease-in 0.2s;
 }
-.test-card:hover .test-card__front {
+.flipped .test-card__front {
   transform: rotateY(0deg);
   transition-delay: 0.2s;
 }
@@ -59,8 +75,7 @@ img {
   transition: all ease-in 0.2s;
   transition-delay: 0.2s
 }
-.test-card:hover .test-card__back {
+.flipped .test-card__back {
   transform: rotateY(90deg);
   transition-delay: 0s;
 }
-/* note: hover is being used in place a flipped class here */
