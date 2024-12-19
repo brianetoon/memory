@@ -19,18 +19,22 @@ img {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 0.5rem;
+
+  max-width: 1000px;
 }
 
 .card {
-  width: 100%;
-  aspect-ratio: 1 / 1;
   border-radius: 0.25rem;
-  background-color: rgb(107, 38, 156);
-
-  background-image: url("/images/dogs/corgi.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  position: relative;
+}
+/* cards picture */
+.card__front {
+  /* position: absolute; */
+  border-radius: 0.25rem;
+}
+/* card cover */
+.card__back {
+  border-radius: 0.25rem;
 }
 
 /* sandbox */
@@ -39,10 +43,24 @@ img {
   position: relative;
 }
 
+/* front of card - the picture */
 .test-card__front {
-
+  position: absolute;
+  transform: rotateY(90deg);
+  transition: all ease-in 0.2s;
+}
+.test-card:hover .test-card__front {
+  transform: rotateY(0deg);
+  transition-delay: 0.2s;
 }
 
+/* back of card */
 .test-card__back {
-
+  transition: all ease-in 0.2s;
+  transition-delay: 0.2s
 }
+.test-card:hover .test-card__back {
+  transform: rotateY(90deg);
+  transition-delay: 0s;
+}
+/* note: hover is being used in place a flipped class here */

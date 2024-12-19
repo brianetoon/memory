@@ -20,6 +20,9 @@ const cardImages = [
   "yawn"
 ];
 
+// data-flipped - prevent from choosing flipped cards
+// data-matched - track which cards are matched to determine when game ends
+
 
 form.addEventListener("submit", e => {
   e.preventDefault();
@@ -38,11 +41,16 @@ function renderBoard() {
   const cards = getShuffledPairs(cardImages);
 
   for (let i = 0; i < cards.length; i++) {
+
     const card = document.createElement("div");
-    // const cardImg 
     card.classList.add("card");
-    card.style.backgroundImage = `url("/images/dogs/${cards[i]}.jpg")`;
     card.setAttribute("name", cards[i]);
+    card.setAttribute("data-matched", false);
+
+    card.innerHTML = `
+      <img class="card__front" src="/images/dogs/${cards[i]}.jpg" alt="card front">
+      <img class="card__back" src="/images/cover.jpg" alt="card back">
+    `;
 
     setTimeout(() => {
       board.appendChild(card);  
@@ -52,8 +60,9 @@ function renderBoard() {
   // prevent player from clicking on card until all cards are rendered
   setTimeout(() => {
     board.addEventListener("click", e => {
-      if (e.target.classList.contains("card")) {
-        handleClick(e.target);
+      console.log(e.target.parentElement)
+      if (e.target.classList.contains("card__back")) {
+        handleClick(e.target.parentElement);
       }
     });
   }, boardStagger * cards.length);
@@ -75,6 +84,7 @@ function handleClick(card) {
   }
 }
 
+
 // Helper functions:
 
 function getShuffledPairs(arr) {
@@ -89,5 +99,3 @@ function shuffle(arr) {
   const shuffledArr = arr.sort(() => Math.random() - 0.5);
   return shuffledArr;
 }
-
-// console.log(getShuffledPairs(cardImages));
