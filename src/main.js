@@ -1,11 +1,13 @@
 const board = document.getElementById("board");
 const newGameBtn = document.getElementById("new-game-btn");
 const form = document.querySelector(".user-form");
+const error = document.querySelector(".error");
 const currentPlayer = document.getElementById("current-player");
 const turnNumber = document.getElementById("turn-number");
 const usernameInput = form.firstElementChild;
 const boardStagger = 80;
 const hideBoardDelay = 2100;
+let errorMessage = null;
 let choiceOne = null;
 let choiceTwo = null;
 let turns = 0;
@@ -23,15 +25,17 @@ const cardImages = [
   "rocket-3",
 ];
 
-// flipped class - prevent from choosing flipped cards
-// data-matched - track which cards are matched to determine when game ends
-
 form.addEventListener("submit", e => {
   e.preventDefault();
+  errorMessage = null;
+  error.textContent = ""
 
   if (usernameInput.value.length < 2) {
-    // update error element
-    console.log("Your name must be at least 2 characters.")
+   errorMessage = "Name must be at least 2 characters.";
+   error.textContent = errorMessage;
+  } else if (usernameInput.value.length > 10) {
+    errorMessage = "Name can not be greater than 10 characters.";
+    error.textContent = errorMessage;
   } else {
     currentPlayer.textContent = `Playing: ${usernameInput.value}`;
     turnNumber.textContent = `Turn: ${turns}`;
