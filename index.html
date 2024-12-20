@@ -5,40 +5,36 @@
     <link rel="icon" type="image/svg+xml" href="/SBA-316/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Memory</title>
-    <script type="module" crossorigin src="/SBA-316/assets/index-B23d5Sn5.js"></script>
-    <link rel="stylesheet" crossorigin href="/SBA-316/assets/index-CfpnPzGu.css">
+    <script type="module" crossorigin src="/SBA-316/assets/index-DUfk0jOS.js"></script>
+    <link rel="stylesheet" crossorigin href="/SBA-316/assets/index-BbUXYlbw.css">
   </head>
   <body class="">
     <div id="app">
-      <header>
-        <h1>Memory</h1>
-        <p class="current-player"></p>
-        <button id="new-game-btn">New Game</button>
-      </header>
 
-      <main>
-        <form class="user-form">
-          <input type="text" name="username" placeholder="Enter your name">
-          <input type="submit" value="Start Game">
-        </form>
+      <div class="container">
 
-        <div id="board" class="board"></div>
+        <header class="main-header">
+          <h1 class="title">Memory</h1>
+          <nav class="main-nav">
+            <div>
+              <p id="current-player"></p>
+              <p id="turn-number"></p>
+            </div>
+            <button id="new-game-btn" class="btn">New Game</button>
+          </nav>
+        </header>
 
-          <!-- <ul class="circles">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul> -->
+        <main class="main-content">
+          
+          <form class="user-form flow">
+            <input type="text" name="username" placeholder="Enter your name">
+            <input class="btn" type="submit" value="Start Game">
+          </form>
 
+          <div id="board" class="board"></div>
 
-      </main>
+        </main>
+      </div>
     </div>
   </body>
 </html>
