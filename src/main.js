@@ -33,11 +33,11 @@ form.addEventListener("submit", e => {
   if (usernameInput.value.length < 2) {
    errorMessage = "Name must be at least 2 characters.";
    error.textContent = errorMessage;
-  } else if (usernameInput.value.length > 10) {
-    errorMessage = "Name can not be greater than 10 characters.";
+  } else if (usernameInput.value.length > 12) {
+    errorMessage = "Name can not be greater than 12 characters.";
     error.textContent = errorMessage;
   } else {
-    currentPlayer.textContent = `Playing: ${usernameInput.value}`;
+    currentPlayer.textContent = usernameInput.value;
     turnNumber.textContent = `Turn: ${turns}`;
     form.style.display = "none";
     newGameBtn.style.display = "block";
@@ -85,14 +85,12 @@ function renderBoard() {
 }
 
 function handleClick(e) {
-  // console.log(e.target.parentElement)
   if (e.target.classList.contains("card__back")) {
     handleChoice(e.target.parentElement);
   }
 }
 
 function handleChoice(card) {
-  console.log(card.getAttribute("name"));
   card.classList.add("flipped");
 
   choiceOne ? choiceTwo = card : choiceOne = card;
@@ -109,7 +107,6 @@ function handleChoice(card) {
 
     } else {
       console.log("those cards don't match");
-      // removed the flipped class after a delay
       setTimeout(() => {
         choiceOne.classList.remove("flipped");
         choiceTwo.classList.remove("flipped");
@@ -152,13 +149,3 @@ function shuffle(arr) {
   const shuffledArr = arr.sort(() => Math.random() - 0.5);
   return shuffledArr;
 }
-
-
-// sandbox:
-
-// const testCard = document.querySelector(".test-card");
-// // console.log(testCard)
-// testCard.addEventListener("click", e => {
-//   console.log(e.target.parentElement);
-//   e.target.parentElement.classList.toggle("flipped");
-// })
