@@ -1,25 +1,26 @@
 const board = document.getElementById("board");
 const newGameBtn = document.getElementById("new-game-btn");
 const form = document.querySelector(".user-form");
-const currentPlayer = document.querySelector(".current-player");
+const currentPlayer = document.getElementById("current-player");
+const turnNumber = document.getElementById("turn-number");
 const usernameInput = form.firstElementChild;
 const boardStagger = 80;
-const hideBoardDelay = 2000;
+const hideBoardDelay = 2100;
 let choiceOne = null;
 let choiceTwo = null;
 let turns = 0;
 
 const cardImages = [
-  "banana",
-  "brownlab",
-  "corgi",
-  "goldenpuppy",
-  "greenpug",
-  "husky",
-  "kingcharles",
-  "sleepy",
-  "window",
-  "yawn"
+  "planet-1",
+  "planet-2",
+  "planet-3",
+  "planet-4",
+  "planet-5",
+  "planet-6",
+  "planet-7",
+  "rocket-1",
+  "rocket-2",
+  "rocket-3",
 ];
 
 // flipped class - prevent from choosing flipped cards
@@ -32,7 +33,8 @@ form.addEventListener("submit", e => {
     // update error element
     console.log("Your name must be at least 2 characters.")
   } else {
-    currentPlayer.textContent = `Now playing: ${usernameInput.value}`;
+    currentPlayer.textContent = `Playing: ${usernameInput.value}`;
+    turnNumber.textContent = `Turn: ${turns}`;
     form.style.display = "none";
     newGameBtn.style.display = "block";
     renderBoard();
@@ -45,6 +47,7 @@ newGameBtn.addEventListener("click", () => {
   choiceOne = null;
   choiceTwo = null;
   turns = 0;
+  turnNumber.textContent = `Turn: ${turns}`;
   renderBoard();
 })
 
@@ -60,8 +63,8 @@ function renderBoard() {
     card.setAttribute("data-matched", false);
 
     card.innerHTML = `
-        <img class="card__front" src="${import.meta.env.BASE_URL}images/dogs/${cards[i]}.jpg" alt="card front">
-        <img class="card__back" src="${import.meta.env.BASE_URL}images/cover.jpg" alt="card back">
+        <img class="card__front" src="${import.meta.env.BASE_URL}images/space/${cards[i]}.jpg" alt="card front">
+        <img class="card__back" src="${import.meta.env.BASE_URL}images/cover.png" alt="card back">
     `;
 
     setTimeout(() => {
@@ -111,6 +114,7 @@ function handleChoice(card) {
       }, 1000)
     }
     turns++;
+    turnNumber.textContent = `Turn: ${turns}`;
   }
 }
 

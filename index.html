@@ -5,31 +5,35 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Memory</title>
-    <link rel="stylesheet" href="./src/style.css">
+    <link rel="stylesheet" href="./src/styles/main.css">
   </head>
-  <body>
+  <body class="">
     <div id="app">
-      <header>
-        <h1>Memory</h1>
-        <p class="current-player"></p>
-        <button id="new-game-btn">New Game</button>
-      </header>
 
-      <main>
-        <form class="user-form">
-          <input type="text" name="username" placeholder="Enter your name">
-          <input type="submit" value="Start Game">
-        </form>
+      <div class="container">
 
-        <div id="board" class="board"></div>
+        <header class="main-header">
+          <h1 class="title">Memory</h1>
+          <nav class="main-nav">
+            <div>
+              <p id="current-player"></p>
+              <p id="turn-number"></p>
+            </div>
+            <button id="new-game-btn" class="btn">New Game</button>
+          </nav>
+        </header>
 
-        <!-- <p>Sandbox</p>
-        <div class="test-card">
-          <img class="test-card__front" src="/images/dogs/corgi.jpg" alt="card front">
-          <img class="test-card__back" src="/images/cover.jpg" alt="card back">
-        </div> -->
+        <main class="main-content">
+          
+          <form class="user-form flow">
+            <input type="text" name="username" placeholder="Enter your name">
+            <input class="btn" type="submit" value="Start Game">
+          </form>
 
-      </main>
+          <div id="board" class="board"></div>
+
+        </main>
+      </div>
     </div>
     <script type="module" src="/src/main.js"></script>
   </body>

@@ -1,0 +1,33 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+img,
+picture,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+body {
+  line-height: 1.5;
+  font-family: var(--font-family-base);
+  color: var(--clr-neutral-light);
+  font-size: var(--size-1);
+  font-weight: bold;
+  background-image: url('/images/stars.jpeg'); 
+
+  text-shadow: 
+    -2px 2px 0 var(--clr-neutral-dark),
+    2px 2px 0 var(--clr-neutral-dark),
+    2px -2px 0 var(--clr-neutral-dark),
+    -2px -2px 0 var(--clr-neutral-dark);
+}

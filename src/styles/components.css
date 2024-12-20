@@ -1,0 +1,97 @@
+:root {
+  --border-radius-1: 0.5rem;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: var(--size-5);
+  text-align: center;
+  color: var(--clr-primary);
+}
+
+.btn {
+  color: var(--clr-neutral-dark);
+  border: none;
+  padding: 0.5rem var(--size-1);
+  border-radius: var(--border-radius-1);
+  align-self: center;
+  cursor: pointer;
+  background-color: var(--clr-accent);
+}
+
+.btn:hover {
+  background-color: var(--clr-primary);
+}
+
+.user-form {
+  display: block;
+  margin-inline: auto;
+  gap: var(--size-0);
+  max-width: 100%;
+  margin-top: var(--size-2);
+}
+
+.user-form input {
+  padding: var(--size--1) var(--size-0);
+  border-radius: var(--border-radius-1);
+  width: 100%;
+  text-align: center;
+  color: var(--clr-neutral-dark);
+  border: none;
+}
+
+input::placeholder {
+  text-align: center;
+  color: var(--clr-neutral-dark);
+}
+
+#new-game-btn {
+  display: none;
+}
+
+.board {
+  margin-block: var(--size-2);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--size-0);
+}
+
+.card {
+  position: relative;
+}
+
+/* cards picture */
+.card__front {
+  position: absolute;
+  border-radius: var(--border-radius-1);
+  transform: rotateY(90deg);
+  transition: all ease-in 0.2s;
+  border: 2px solid var(--clr-neutral-light);
+
+}
+.flipped .card__front {
+  transform: rotateY(0deg);
+  transition-delay: 0.2s;
+}
+
+/* card cover */
+.card__back {
+  border-radius: var(--border-radius-1);
+  transition: all ease-in 0.2s;
+  transition-delay: 0.2s;
+  border: 2px solid var(--clr-neutral-light);
+  cursor: pointer;
+}
+.flipped .card__back {
+  transform: rotateY(90deg);
+  transition-delay: 0s;
+}
