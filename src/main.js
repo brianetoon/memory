@@ -1,8 +1,10 @@
 const board = document.getElementById("board");
+const newGameBtn = document.getElementById("new-game-btn");
 const form = document.querySelector(".user-form");
 const currentPlayer = document.querySelector(".current-player");
 const usernameInput = form.firstElementChild;
-const boardStagger = 50;
+const boardStagger = 80;
+const hideBoardDelay = 2000;
 let choiceOne = null;
 let choiceTwo = null;
 let turns = 0;
@@ -32,9 +34,19 @@ form.addEventListener("submit", e => {
   } else {
     currentPlayer.textContent = `Now playing: ${usernameInput.value}`;
     form.style.display = "none";
+    newGameBtn.style.display = "block";
     renderBoard();
   }
 });
+
+newGameBtn.addEventListener("click", () => {
+  board.removeEventListener("click", handleClick);
+  board.innerHTML = "";
+  choiceOne = null;
+  choiceTwo = null;
+  turns = 0;
+  renderBoard();
+})
 
 function renderBoard() {
   const cards = getShuffledPairs(cardImages);
@@ -43,6 +55,7 @@ function renderBoard() {
 
     const card = document.createElement("div");
     card.classList.add("card");
+    card.classList.add("flipped");
     card.setAttribute("name", cards[i]);
     card.setAttribute("data-matched", false);
 
@@ -54,20 +67,24 @@ function renderBoard() {
     setTimeout(() => {
       board.appendChild(card);  
     }, boardStagger * i);
+
+    setTimeout(() => {
+      card.classList.remove("flipped")
+    }, (boardStagger * i) + hideBoardDelay);
+
   }
 
-  // prevent player from clicking on card until all cards are rendered
-  setTimeout(() => {
-    board.addEventListener("click", e => {
-      console.log(e.target.parentElement)
-      if (e.target.classList.contains("card__back")) {
-        handleClick(e.target.parentElement);
-      }
-    });
-  }, boardStagger * cards.length);
+  board.addEventListener("click", handleClick);
 }
 
-function handleClick(card) {
+function handleClick(e) {
+  // console.log(e.target.parentElement)
+  if (e.target.classList.contains("card__back")) {
+    handleChoice(e.target.parentElement);
+  }
+}
+
+function handleChoice(card) {
   console.log(card.getAttribute("name"));
   card.classList.add("flipped");
 
@@ -76,11 +93,13 @@ function handleClick(card) {
   if (choiceOne && choiceTwo) {
     if (choiceOne.getAttribute("name") === choiceTwo.getAttribute("name")) {
       console.log("those cards match!");
-      // set data-matched to true
       choiceOne.setAttribute("data-matched", true);
       choiceTwo.setAttribute("data-matched", true);
       choiceOne = null;
       choiceTwo = null;
+
+      checkIfPlayerWon()
+
     } else {
       console.log("those cards don't match");
       // removed the flipped class after a delay
@@ -91,7 +110,23 @@ function handleClick(card) {
         choiceTwo = null;
       }, 1000)
     }
+    turns++;
   }
+}
+
+function checkIfPlayerWon() {
+  const cards = document.querySelectorAll(".card");
+
+  for (let i = 0; i < cards.length; i++) {
+    if (cards[i].getAttribute("data-matched") !== "true") {
+      console.log("keep up the good work!");
+      return;
+    }
+  }
+  
+  setTimeout(() => {
+    alert(`Congrats ${usernameInput.value}! You matched all cards in ${turns} turns.`)
+  }, 500);
 }
 
 

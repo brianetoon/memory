@@ -14,6 +14,10 @@ img {
   max-width: 100%;
 }
 
+#new-game-btn {
+  display: none;;
+}
+
 .board {
   margin-block: 2rem;
   display: grid;
@@ -53,7 +57,6 @@ img {
 
 
 /* sandbox */
-
 .test-card {
   max-width: 12rem;
   position: relative;
