@@ -20,6 +20,8 @@ const cardImages = [
   "planet-5",
   "planet-6",
   "planet-7",
+  "planet-8",
+  "planet-9",
   "rocket-1",
   "rocket-2",
   "rocket-3",
@@ -91,11 +93,18 @@ function handleClick(e) {
 }
 
 function handleChoice(card) {
+
+  if (card === choiceOne || card.classList.contains("flipped")) {
+    return;
+  }
+
   card.classList.add("flipped");
 
-  choiceOne ? choiceTwo = card : choiceOne = card;
 
-  if (choiceOne && choiceTwo) {
+  if (choiceOne) {
+    choiceTwo = card;
+    board.removeEventListener("click", handleClick);
+
     if (choiceOne.getAttribute("name") === choiceTwo.getAttribute("name")) {
       console.log("those cards match!");
       choiceOne.setAttribute("data-matched", true);
@@ -104,6 +113,7 @@ function handleChoice(card) {
       choiceTwo = null;
 
       checkIfPlayerWon()
+      board.addEventListener("click", handleClick);
 
     } else {
       console.log("those cards don't match");
@@ -112,10 +122,13 @@ function handleChoice(card) {
         choiceTwo.classList.remove("flipped");
         choiceOne = null;
         choiceTwo = null;
+        board.addEventListener("click", handleClick);
       }, 1000)
     }
     turns++;
     turnNumber.textContent = `Turn: ${turns}`;
+  } else {
+    choiceOne = card;
   }
 }
 
