@@ -31,3 +31,9 @@ body {
     2px -2px 0 var(--clr-neutral-dark),
     -2px -2px 0 var(--clr-neutral-dark);
 }
+
+@supports (background-image: url('/images/stars.webp')) {
+  body {
+    background-image: url('/images/stars.webp');
+  }
+}
