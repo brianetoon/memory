@@ -88,6 +88,11 @@ input::placeholder {
   border: 2px solid var(--clr-neutral-light);
 }
 
+.card__front > * {
+  border-radius: var(--border-radius-1);
+
+}
+
 .flipped .card__front {
   transform: rotateY(0deg);
   transition-delay: 0.2s;

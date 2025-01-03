@@ -70,9 +70,12 @@ function renderBoard() {
     card.classList.add("flipped");
     card.setAttribute("name", cards[i]);
     card.setAttribute("data-matched", false);
-
+    
     card.innerHTML = `
-      <img class="card__front" src="${import.meta.env.BASE_URL}images/space/${cards[i]}.jpg" alt="card front">
+      <picture class="card__front">
+        <source srcset="${import.meta.env.BASE_URL}images/space/webp/${cards[i]}.webp" type="image/webp">
+        <img srcset="${import.meta.env.BASE_URL}images/space/jpg/${cards[i]}.jpg" alt="${cards[i]}">
+      </picture>
       <div class="card__back"></div>
     `;
 
@@ -86,7 +89,6 @@ function renderBoard() {
 
   }
 
-  // testing 
   setTimeout(() => {
     board.addEventListener("click", handleClick);
     newGameBtn.addEventListener("click", startGame);
@@ -145,7 +147,6 @@ function checkIfPlayerWon() {
 
   for (let i = 0; i < cards.length; i++) {
     if (cards[i].getAttribute("data-matched") !== "true") {
-      console.log("keep up the good work!");
       return;
     }
   }
