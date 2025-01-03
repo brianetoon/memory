@@ -28,7 +28,11 @@ The purpose of this project is to demonstrate understanding of the Document Obje
 
 As mentioned in the Project Summary section, this application is a Memory game. A game where the player is shown eight pairs of matching images for a short period of time after which they are hidden. The player's goal is to find all the matching pairs in the least amount of turns possible. 
 
-The main component of this application is the game board where the randomized set of cards is output to the user interface. A click event listener is applied to the board which responds to user clicks on face-down cards. When a face down card is clicked it is temporarily stored in a variable and when a second face-down card is clicked, the two cards are compared to see if they are the same. In order to accomplish this there is a name property on each card element that corresponds to the image on the card. If the name property on both selected cards match, the cards remain face up and their `data-matched` attribute is set to `true`. After each successful match, a function runs to check if the player has won by checking the `data-matched` attribute of each card element. If they have won, the user recieves an alert that they have matched all the cards and have the option to start a new game.
+The main component of this application is the game board where the randomized set of cards is output to the user interface. A click event listener is applied to the board which responds to user clicks on face-down cards. When a face-down card is clicked it is temporarily stored in a variable and when a second face-down card is clicked, the two cards are compared to see if they are the same. In order to accomplish this there is a name property on each card element that corresponds to the image on the card. If the name property on both selected cards match, the cards remain face up and their `data-matched` attribute is set to `true`. After each successful match, a function runs to check if the player has won by checking the `data-matched` attribute of each card element. If they have won, the user recieves an alert that they have matched all the cards and have the option to start a new game.
+
+**Notes:**
+
+- The randomization technique used for the cards utilizes the JavaScript sort method. Although not truly random, it served the purpose of this game which didn't require true randomness.
 
 ## My Approach
 
@@ -46,11 +50,6 @@ The main component of this application is the game board where the randomized se
 - Here the game is working correctly, however I wanted to add an animation to "flip" the cards over when they are clicked on and when they are turned face-down by toggling the "flipped" class mentioned above.
 - The final step for the game functionality was to allow the user to click a button to start a new game.
 - To do this I called a function to reset the game variables, remove the old event listener and re-render the game board.
-
-**Notes:**
-
-- The randomization technique used for the cards utilizes the JavaScript sort method. Although not truly random, it served the purpose of this game which didn't require true randomness.
-- If a user *rapidly* clicks on a card or the new game button while an animation is in progress, it will break the game and a reload will be required.
 
 ## Deliverables
 

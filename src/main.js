@@ -47,7 +47,9 @@ form.addEventListener("submit", e => {
   }
 });
 
-newGameBtn.addEventListener("click", () => {
+newGameBtn.addEventListener("click", startGame);
+
+function startGame() {
   board.removeEventListener("click", handleClick);
   board.innerHTML = "";
   choiceOne = null;
@@ -55,10 +57,11 @@ newGameBtn.addEventListener("click", () => {
   turns = 0;
   turnNumber.textContent = `Turn: ${turns}`;
   renderBoard();
-})
+}
 
 function renderBoard() {
   const cards = getShuffledPairs(cardImages);
+  newGameBtn.removeEventListener("click", startGame);
 
   for (let i = 0; i < cards.length; i++) {
 
@@ -83,7 +86,13 @@ function renderBoard() {
 
   }
 
-  board.addEventListener("click", handleClick);
+  // testing 
+  setTimeout(() => {
+    board.addEventListener("click", handleClick);
+    newGameBtn.addEventListener("click", startGame);
+
+  }, hideBoardDelay + (boardStagger * cards.length));
+
 }
 
 function handleClick(e) {
@@ -100,7 +109,6 @@ function handleChoice(card) {
 
   card.classList.add("flipped");
 
-
   if (choiceOne) {
     choiceTwo = card;
     board.removeEventListener("click", handleClick);
@@ -112,7 +120,7 @@ function handleChoice(card) {
       choiceOne = null;
       choiceTwo = null;
 
-      checkIfPlayerWon()
+      checkIfPlayerWon();
       board.addEventListener("click", handleClick);
 
     } else {
@@ -148,7 +156,7 @@ function checkIfPlayerWon() {
 }
 
 
-// Helper functions:
+// Helper Functions:
 
 function getShuffledPairs(arr) {
   const shuffledArr = shuffle(arr);
