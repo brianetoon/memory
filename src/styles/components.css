@@ -99,7 +99,11 @@ input::placeholder {
   transition-delay: 0.2s;
   border: 2px solid var(--clr-neutral-light);
   cursor: pointer;
+  background-color: var(--clr-accent);
+  width: 100%;
+  aspect-ratio: 1 / 1;
 }
+
 .flipped .card__back {
   transform: rotateY(90deg);
   transition-delay: 0s;

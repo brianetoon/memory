@@ -72,8 +72,8 @@ function renderBoard() {
     card.setAttribute("data-matched", false);
 
     card.innerHTML = `
-        <img class="card__front" src="${import.meta.env.BASE_URL}images/space/${cards[i]}.jpg" alt="card front">
-        <img class="card__back" src="${import.meta.env.BASE_URL}images/cover.png" alt="card back">
+      <img class="card__front" src="${import.meta.env.BASE_URL}images/space/${cards[i]}.jpg" alt="card front">
+      <div class="card__back"></div>
     `;
 
     setTimeout(() => {
