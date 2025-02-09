@@ -53,5 +53,5 @@ The main component of this application is the game board where the randomized se
 
 ## Deliverables
 
-- GitHub Repository: https://github.com/brianetoon/SBA-316
-- Live Project on GitHub Pages: https://brianetoon.github.io/SBA-316/
+- GitHub Repository: https://github.com/brianetoon/memory
+- Live Project on GitHub Pages: https://brianetoon.github.io/memory/

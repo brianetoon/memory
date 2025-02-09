@@ -90,7 +90,6 @@ input::placeholder {
 
 .card__front > * {
   border-radius: var(--border-radius-1);
-
 }
 
 .flipped .card__front {

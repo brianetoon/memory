@@ -30,11 +30,11 @@ const cardImages = [
 form.addEventListener("submit", e => {
   e.preventDefault();
   errorMessage = null;
-  error.textContent = ""
+  error.textContent = "";
 
   if (usernameInput.value.length < 2) {
-   errorMessage = "Name must be at least 2 characters.";
-   error.textContent = errorMessage;
+    errorMessage = "Name must be at least 2 characters.";
+    error.textContent = errorMessage;
   } else if (usernameInput.value.length > 12) {
     errorMessage = "Name can not be greater than 12 characters.";
     error.textContent = errorMessage;
@@ -84,7 +84,7 @@ function renderBoard() {
     }, boardStagger * i);
 
     setTimeout(() => {
-      card.classList.remove("flipped")
+      card.classList.remove("flipped");
     }, (boardStagger * i) + hideBoardDelay);
 
   }

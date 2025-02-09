@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: process.env.NODE_ENV === 'production' ? '/SBA-316/' : '/',
+  base: process.env.NODE_ENV === 'production' ? '/memory/' : '/',
 });
